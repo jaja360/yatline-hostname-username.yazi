@@ -1,28 +1,39 @@
 local function setup(_, options)
-	options = options or {}
+  options = options or {}
 
-	local config = {
-		hostname_username_color = options.hostname_username_color or "silver",
-	}
+  local config = {
+    color = options.color or "silver",
+    mode = options.mode or "both",  -- "both", "user", or "host"
+  }
 
-	if Yatline ~= nil then
-		function Yatline.coloreds.get:hostname_username()
+  if Yatline ~= nil then
+    function Yatline.coloreds.get:hostname_username()
       if ya.target_family() ~= "unix" then
-				return {}
+        return {}
       end
 
-      local user = ya.user_name()
-      local host = ya.host_name()
-      if not user or not host then
-				return {}
+      local user = ya.user_name() or ""
+      local host = ya.host_name() or ""
+      local out = ""
+      if config.mode == "both" then
+        out = string.format("%s@%s", user, host)
+      elseif config.mode == "user" then
+        out = user
+      elseif config.mode == "host" then
+        out = host
+      else
+        return {}  -- invalid config value, skip display
       end
 
-			local out = string.format("%s@%s", user, host)
+      if out == "" then
+        return {}
+      end
+
       return {
-        { out, config.hostname_username_color }
+        { out, config.color }
       }
-		end
-	end
+    end
+  end
 end
 
 return { setup = setup }
