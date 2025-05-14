@@ -1,0 +1,35 @@
+# yatline-hostname-username.yazi
+
+An addon to display the current hostname and username in your [yatline.yazi](https://github.com/imsi32/yatline.yazi).
+
+## Requirements
+
+- [yazi](https://github.com/sxyazi/yazi) version >= 0.4.0
+- [yatline.yazi](https://github.com/imsi32/yatline.yazi)
+
+## Installation
+
+```sh
+ya pack -a jaja360/yatline-hostname-username.yazi
+```
+
+## Usage
+
+> [!IMPORTANT]
+> Add this to your `~/.config/yazi/init.lua` after yatline.yazi's initialization.
+
+```lua
+require("yatline-modified-time"):setup()
+```
+
+Then, add it in one of your sections in the yatline configuration using:
+
+```lua
+{ type = "coloreds", custom = false, name = "hostname-username" }
+```
+
+## Credits
+
+- [Yazi](https://github.com/sxyazi/yazi)
+- [yatline.yazi](https://github.com/imsi32/yatline.yazi)
+- [yatline-modified-time.yazi](https://github.com/wekauwau/yatline-modified-time.yazi)
