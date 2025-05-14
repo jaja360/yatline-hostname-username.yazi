@@ -10,7 +10,7 @@ An addon to display the current hostname and username in your [yatline.yazi](htt
 ## Installation
 
 ```sh
-ya pack -a jaja360/yatline-hostname-username.yazi
+ya pack -a jaja360/yatline-hostname-username
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ ya pack -a jaja360/yatline-hostname-username.yazi
 > Add this to your `~/.config/yazi/init.lua` after yatline.yazi's initialization.
 
 ```lua
-require("yatline-modified-time"):setup()
+require("yatline-hostname-username"):setup()
 ```
 
 Then, add it in one of your sections in the yatline configuration using:
